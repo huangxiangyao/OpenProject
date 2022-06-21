@@ -548,11 +548,11 @@ describe WorkPackages::SetAttributesService, type: :model do
             .to eql Time.zone.today
         end
 
-        it "sets the duration to 1" do
+        it "sets the duration to nil" do
           subject
 
           expect(work_package.duration)
-            .to eq 1
+            .to be_nil
         end
       end
     end
@@ -571,11 +571,11 @@ describe WorkPackages::SetAttributesService, type: :model do
             .to eq(Time.zone.today + 1.day)
         end
 
-        it "sets the duration to 1" do
+        it "sets the duration to nil" do
           subject
 
           expect(work_package.duration)
-            .to eq 1
+            .to be_nil
         end
       end
     end
@@ -716,11 +716,11 @@ describe WorkPackages::SetAttributesService, type: :model do
             .to eq(Time.zone.today + 5.days)
         end
 
-        it "sets the duration to 1" do
+        it "sets the duration to nil" do
           subject
 
           expect(work_package.duration)
-            .to eq 1
+            .to be_nil
         end
       end
     end
@@ -745,11 +745,11 @@ describe WorkPackages::SetAttributesService, type: :model do
             .to be_nil
         end
 
-        it "sets the duration to 1" do
+        it "sets the duration to nil" do
           subject
 
           expect(work_package.duration)
-            .to eq 1
+            .to be_nil
         end
       end
     end

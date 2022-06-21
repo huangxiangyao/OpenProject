@@ -303,7 +303,15 @@ describe ::API::V3::WorkPackages::WorkPackageRepresenter do
 
         it { is_expected.to be_json_eql('P6D'.to_json).at_path('duration') }
 
-        context 'with no duration' do
+        context 'when no duration is present' do
+          let(:work_package) { build_stubbed(:work_package) }
+
+          it 'renders as null' do
+            expect(subject).to be_json_eql(nil.to_json).at_path('duration')
+          end
+        end
+
+        context 'when duration is nil' do
           let(:duration) { nil }
 
           it 'renders as null' do

@@ -182,8 +182,6 @@ class WorkPackages::SetAttributesService < ::BaseServices::SetAttributes
 
     work_package.duration = if work_package.start_date && work_package.due_date
                               work_package.due_date - work_package.start_date + 1
-                            else
-                              1
                             end
   end
 
