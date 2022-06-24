@@ -146,6 +146,7 @@ module WorkPackages
 
     validate :validate_duration_integer
     validate :validate_duration_matches_dates
+    validate :validate_duration_for_non_milestone_type
 
     def initialize(work_package, user, options: {})
       super
@@ -335,6 +336,12 @@ module WorkPackages
         errors.add :duration, :smaller_than_dates
       elsif calculated_duration < model.duration
         errors.add :duration, :larger_than_dates
+      end
+    end
+
+    def validate_duration_for_non_milestone_type
+      if model.duration.present? && model.is_milestone?
+        errors.add :duration, :not_available_for_milestones
       end
     end
 
